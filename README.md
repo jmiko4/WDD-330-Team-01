@@ -1,4 +1,4 @@
-# sleepoutside
+# SleepOutside
 
 ## URL
 https://wdd-330-team-01.netlify.app/
