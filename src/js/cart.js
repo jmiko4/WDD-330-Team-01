@@ -1,9 +1,16 @@
 import { getLocalStorage } from "./utils.mjs";
 
 function renderCartContents() {
-  const cartItems = getLocalStorage("so-cart");
-  const htmlItems = cartItems.map((item) => cartItemTemplate(item));
-  document.querySelector(".product-list").innerHTML = htmlItems.join("");
+  let cartItems = getLocalStorage("so-cart");
+
+  // If no items found, display empty message
+  if (!cartItems || !Array.isArray(cartItems)) {
+    alert("No products added yet!");
+    return;
+  }
+
+  const htmlItems = cartItems.map((item) => cartItemTemplate(item)).join("");
+  document.querySelector(".product-list").innerHTML = htmlItems;
 }
 
 function cartItemTemplate(item) {
