@@ -6,7 +6,7 @@ function addProductToCart(product) {
   // if empty create a new array and put in cart
   // if not empty add to current array and put in cart
   const cart = getLocalStorage("so-cart")
-    if (cart == null ) {
+    if (cart == null) {
       setLocalStorage("so-cart", [product]);
     }
     else {
