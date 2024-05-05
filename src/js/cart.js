@@ -3,10 +3,11 @@ import { getLocalStorage } from "./utils.mjs";
 function renderCartContents() {
   const cartItems = getLocalStorage("so-cart");
   //if cart items has a map method then wrap in if
-  if (cartItems.map) { 
+  if (cartItems.map) {
     const htmlItems = cartItems.map((item) => cartItemTemplate(item));
-  document.querySelector(".product-list").innerHTML = htmlItems.join("");
-}}
+    document.querySelector(".product-list").innerHTML = htmlItems.join("");
+  }
+}
 
 function cartItemTemplate(item) {
   const newItem = `<li class="cart-card divider">
