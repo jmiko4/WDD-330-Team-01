@@ -131,7 +131,7 @@ button {
 }
 
 #cart-icon.adding-item {
-  fill: lightblue;
+  fill: var(--tertiary-color);
 }
 
 /* End cart icon styles */
