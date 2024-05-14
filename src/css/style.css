@@ -85,7 +85,7 @@ header {
   margin-top: -1.3em;
 }
 
-.logo--square > div {
+.logo--square>div {
   margin-top: -1.7em;
 }
 
@@ -115,7 +115,6 @@ button {
 .cart {
   padding-top: 1em;
   position: relative;
-  display: inline-block;
   text-align: center;
 }
 
@@ -133,20 +132,6 @@ button {
 
 #cart-icon.adding-item {
   fill: lightblue;
-}
-
-#cart-count {
-  position: absolute;
-  top: -10px;
-  right: -10px;
-  background-color: rgb(112, 101, 70);
-  color: white;
-  border-radius: 50%;
-  padding: 2px 6px;
-  font-size: 12px;
-  font-weight: bold;
-
-  /* Hidden when count is 0 */
 }
 
 /* End cart icon styles */
