@@ -41,7 +41,7 @@ function cartItemTemplate(item) {
     <h2 class="card__name">${item.Name}</h2>
   </a>
   <p class="cart-card__color">${item.Colors[0].ColorName}</p>
-  <p class="cart-card__quantity">qty: 1 <a id= "remove${item.Id}" href=# title="Remove From Cart" data-id="${item.Id}">X</a></p> 
+  <p class="cart-card__quantity">qty: ${item.quantity} <a id= "remove${item.Id}" href=# title="Remove From Cart" data-id="${item.Id}">X</a></p> 
   <p class="cart-card__price">$${item.FinalPrice}</p>
 </li>`;
 
@@ -58,7 +58,7 @@ function updateCartTotal(items) {
   // calculate the total
   var total = 0;
   items.forEach(function (item) {
-    total += item.FinalPrice; //* item.quantity;
+    total += item.FinalPrice * item.quantity;
   });
 
   // display total

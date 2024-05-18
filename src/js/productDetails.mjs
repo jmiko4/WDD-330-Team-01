@@ -16,10 +16,23 @@ export function addProductToCart(product) {
     // if not empty add to current array and put in cart
     const cart = getLocalStorage("so-cart");
     if (cart == null) {
+      // set quantity to one
+      product.quantity = 1;
       setLocalStorage("so-cart", [product]);
     } else {
-      cart.push(product);
-      setLocalStorage("so-cart", cart);
+      const sameItem = cart.find((item)=> item.Id == product.Id);
+
+      // debugger;
+
+        if (sameItem != null ) {
+          sameItem.quantity = sameItem.quantity + 1;
+        }
+
+        else {
+         product.quantity = 1
+         cart.push(product);
+        }
+        setLocalStorage("so-cart", cart);
     }
 }
   
