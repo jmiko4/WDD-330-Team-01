@@ -22,9 +22,12 @@ function renderCartContents() {
 
         //re-render the cart list
         renderCartContents();
+
       });
     });
   }
+  
+updateCartTotal(cartItems);
 }
 
 function cartItemTemplate(item) {
@@ -47,3 +50,36 @@ function cartItemTemplate(item) {
 }
 
 renderCartContents();
+
+
+// cart update with Total
+function updateCartTotal(items) {
+  var cartFooter = document.querySelector(".cart-footer");
+  cartFooter.classList.remove("hide");
+
+  console.log("Items", items);
+
+  // calculate the total
+  var total= 0;
+  items.forEach(function(item) {
+    total += item.FinalPrice //* item.quantity;
+  });
+
+  // display total
+  var totalHTML = document.createElement("p");
+  totalHTML.textContent = (`Total: $${total}`);
+  totalHTML.classList.add("cart-total");
+
+  //remove existing total display
+  var existingTotal = cartFooter.querySelector(".cart-total");
+  if (existingTotal) {
+    cartFooter.removeChild(existingTotal);
+  }
+
+  // insert total into cart footer
+  cartFooter.appendChild(totalHTML);
+}
+
+
+
+
