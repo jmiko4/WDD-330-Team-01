@@ -1,28 +1,53 @@
-// product-card_price is where we want the discount to be displayed.
-const productPriceElement = document.querySelector('.product-card_price');
+// Select the container where product listings are rendered.
+const productContainer = document.querySelector('.product-listing-container');
 
-// Function to display the disocunt for a product.
-const displayDiscount = (product) => 
-{
-    // Calculate the discounted price.
-    const discountedPrice = product.ListedPrice * 0.75;
-
-    // Create a new element to display the discount.
-    const discountElement = document.createElement('p');
-    discountElement.classList.add('disocunt'); // Add a class to the element.
-
-    // Set the text content of the element.
-    discountedElement.textContent = `Discounted Price: $${discountedPrice.toFixed(2)}`;
-
-    // Append the element to the product price element.
-    productPriceElement.insertAdjacentElement('afterend', discountElement) 
+// Fetch the JSON data from the provided URL.
+const fetchProducts = async () => {
+  try {
+    const response = await fetch('./json/tents.json');
+    const products = await response.json();
+    displayDiscounts(products);
+  } catch (error) {
+    console.error('Error fetching product data:', error);
+  }
 };
 
-// I guess at how to extract the data from the JSON file.
-const product = {
-    ListedPrice: src.jsontents.ListPrice
-}
+// Function to calculate and display discounts.
+const displayDiscounts = (products) => {
+  products.forEach(product => {
+    // Calculate the discounted price.
+    const discountPercentage = 25; // Example discount percentage.
+    const discountedPrice = product.ListPrice * (1 - discountPercentage / 100);
 
+    // Create elements to display product information and discount.
+    const productCard = document.createElement('div');
+    productCard.classList.add('product-card');
 
-// Call the function to display the discount
-displayDiscount(product);
+    const productName = document.createElement('h2');
+    productName.textContent = product.NameWithoutBrand;
+
+    const productImage = document.createElement('img');
+    productImage.src = product.Image;
+    productImage.alt = product.NameWithoutBrand;
+
+    const originalPrice = document.createElement('p');
+    originalPrice.classList.add('original-price');
+    originalPrice.textContent = `Original Price: $${product.ListPrice.toFixed(2)}`;
+
+    const discountElement = document.createElement('p');
+    discountElement.classList.add('discount');
+    discountElement.textContent = `Discounted Price: $${discountedPrice.toFixed(2)}`;
+
+    // Append elements to the product card.
+    productCard.appendChild(productImage);
+    productCard.appendChild(productName);
+    productCard.appendChild(originalPrice);
+    productCard.appendChild(discountElement);
+
+    // Append the product card to the product container.
+    productContainer.appendChild(productCard);
+  });
+};
+
+// Call the function to fetch products and display discounts.
+fetchProducts();
