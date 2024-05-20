@@ -35,3 +35,42 @@ export function renderListWithTemplate(templateFn, parentElement, list, position
   const htmlStrings = list.map(item => templateFn(item));
   parentElement.insertAdjacentHTML(position, htmlStrings.join(''));
 }
+
+export function renderWithTemplate(templateFn, parentElement, data, callback, position="afterbegin", clear=true) {
+  if (clear) {
+    parentElement.innerHTML = "";
+  }
+  const template = templateFn(data);
+  parentElement.insertAdjacentHTML(position, template);
+  if(callback) {
+    callback(data);
+  }
+}
+
+// Function to load template from a given path
+export function loadTemplate(path) {
+  return async function () {
+    const res = await fetch(path);
+    if (res.ok) {
+      const html = await res.text();
+      return html;
+    } else {
+      throw new Error(`Failed to load template from ${path}`);
+    }
+  };
+}
+
+// Function to load and render header and footer
+export async function loadHeaderFooter() {
+  const headerTemplateFn = loadTemplate("/partials/header.html");
+  const footerTemplateFn = loadTemplate("/partials/footer.html");
+
+  const headerEl = qs('header');
+  const footerEl = qs('footer');
+
+  const headerHTML = await headerTemplateFn();
+  const footerHTML = await footerTemplateFn();
+
+  renderWithTemplate(() => headerHTML, headerEl);
+  renderWithTemplate(() => footerHTML, footerEl);
+}
