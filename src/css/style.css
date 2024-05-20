@@ -170,6 +170,18 @@ button {
   width: 100%;
 }
 
+#productSuggestedPrice, #productFinalPrice{
+  display: inline;
+  margin-right: 10px;
+}
+#productSuggestedPrice {
+  text-decoration: line-through;
+}
+#productFinalPrice {
+  font-size: 1.5em;
+  color:#525b0f;
+}
+
 /* Start cart list card styles */
 .cart-card {
   display: grid;
