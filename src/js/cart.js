@@ -25,6 +25,8 @@ function renderCartContents() {
       });
     });
   }
+
+  updateCartTotal(cartItems);
 }
 
 function cartItemTemplate(item) {
@@ -39,7 +41,7 @@ function cartItemTemplate(item) {
     <h2 class="card__name">${item.Name}</h2>
   </a>
   <p class="cart-card__color">${item.Colors[0].ColorName}</p>
-  <p class="cart-card__quantity">qty: 1 <a id= "remove${item.Id}" href=# title="Remove From Cart" data-id="${item.Id}">X</a></p> 
+  <p class="cart-card__quantity">qty: ${item.quantity} <a id= "remove${item.Id}" href=# title="Remove From Cart" data-id="${item.Id}">X</a></p> 
   <p class="cart-card__price">$${item.FinalPrice}</p>
 </li>`;
 
@@ -47,3 +49,29 @@ function cartItemTemplate(item) {
 }
 
 renderCartContents();
+
+// cart update with Total
+function updateCartTotal(items) {
+  var cartFooter = document.querySelector(".cart-footer");
+  cartFooter.classList.remove("hide");
+
+  // calculate the total
+  var total = 0;
+  items.forEach(function (item) {
+    total += item.FinalPrice * item.quantity;
+  });
+
+  // display total
+  var totalHTML = document.createElement("p");
+  totalHTML.textContent = `Total: $${total}`;
+  totalHTML.classList.add("cart-total");
+
+  //remove existing total display
+  var existingTotal = cartFooter.querySelector(".cart-total");
+  if (existingTotal) {
+    cartFooter.removeChild(existingTotal);
+  }
+
+  // insert total into cart footer
+  cartFooter.appendChild(totalHTML);
+}
