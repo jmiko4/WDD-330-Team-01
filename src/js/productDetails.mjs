@@ -3,12 +3,19 @@ import { setLocalStorage, getLocalStorage } from "./utils.mjs";
 let product = {};
 
 export default async function productDetails(productId, selector){ 
-     // get the details for the current product. findProductById will return a promise! use await or .then() to process it
+  // get the details for the current product. findProductById will return a promise! use await or .then() to process it
   product = await findProductById(productId);
-  // once we have the product details we can render out the HTML
-  renderProductDetails();
-  // once the HTML is rendered we can add a listener to Add to Cart button
-  document.getElementById("addToCart").addEventListener("click", addToCart);
+  
+  if (product) {
+    // once we have the product details we can render out the HTML
+    renderProductDetails();
+    // once the HTML is rendered we can add a listener to Add to Cart button
+    document.getElementById("addToCart").addEventListener("click", addToCart);
+  } else {
+    // Display error message and hide "Add to Cart" button
+    alert("Product not found.");
+    document.getElementById("addToCart").style.display = "none";
+  }
 }
 export function addProductToCart(product) {
     // check to see if cart is empty
