@@ -22,6 +22,22 @@ export default function renderCartContents() {
         //re-render the cart list
         renderCartContents();
       });
+      const quantityBox = document.getElementById(`quantity${item.Id}`);
+      quantityBox.addEventListener("change", (e) => {
+        //update quantity in cart
+        const newQuantity = cartItems.find(
+          (c) => c.Id == e.target.getAttribute("data-id")
+        );
+
+        newQuantity.quantity = e.target.value;
+        //restore cart in localStorage
+        setLocalStorage("so-cart", cartItems);
+        //render total
+
+        //render cart with updated quantity
+        updateCartTotal(cartItems);
+        
+      });
     });
   }
 
@@ -40,7 +56,7 @@ function cartItemTemplate(item) {
     <h2 class="card__name">${item.Name}</h2>
   </a>
   <p class="cart-card__color">${item.Colors[0].ColorName}</p>
-  <p class="cart-card__quantity">qty: ${item.quantity} <a id= "remove${item.Id}" href=# title="Remove From Cart" data-id="${item.Id}">X</a></p> 
+  <p class="cart-card__quantity">qty: <input type="number" min="0" size="2" id="quantity${item.Id}" data-id="${item.Id}" value="${item.quantity}"> <a id= "remove${item.Id}" href=# title="Remove From Cart" data-id="${item.Id}">X</a></p> 
   <p class="cart-card__price">$${item.FinalPrice}</p>
 </li>`;
 
