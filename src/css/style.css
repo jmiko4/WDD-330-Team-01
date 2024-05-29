@@ -219,6 +219,39 @@ button {
   grid-column: 3;
 }
 
+.product-categories {
+  padding: 20px;
+  text-align: center;
+}
+
+.grid {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.grid-item {
+  flex: 1 1 calc(25% - 40px); /* Adjust the width of each grid item */
+  max-width: 200px; /* Ensure the items don't grow too large */
+  text-align: center;
+}
+
+.grid-item img {
+  width: 100px; /* Size of the icons */
+  height: 100px;
+}
+
+.grid-item h3 {
+  margin-top: 10px;
+  font: var(--font-body);
+}
+.grid-item a {
+  text-decoration: none;
+  color: inherit;
+  font-weight: bold;
+}
+
 @media screen and (min-width: 500px) {
   body {
     max-width: 1080px;
