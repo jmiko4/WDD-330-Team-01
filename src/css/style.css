@@ -183,6 +183,11 @@ button {
   color: #525b0f;
 }
 
+#productDiscount {
+  color: red;
+  font-weight: bold;
+}
+
 /* Start cart list card styles */
 .cart-card {
   display: grid;
