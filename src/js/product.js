@@ -3,6 +3,7 @@ import { findProductById } from "./productData.mjs";
 import productDetails from "./productDetails.mjs";
 import { addProductToCart } from "./productDetails.mjs";
 import { loadHeaderFooter } from "./utils.mjs";
+import { animateCartIcon } from "./utils.mjs";
 
 const productId = getParam("product");
 productDetails(productId);
@@ -18,3 +19,5 @@ async function addToCartHandler(e) {
 document
   .getElementById("addToCart")
   .addEventListener("click", addToCartHandler);
+
+document.getElementById("addToCart").addEventListener("click", animateCartIcon);
