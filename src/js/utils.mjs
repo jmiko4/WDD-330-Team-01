@@ -21,28 +21,28 @@ export function setClick(selector, callback) {
   });
   qs(selector).addEventListener("click", callback);
 }
-export function getParam(param){
+export function getParam(param) {
   const queryString = window.location.search;
-const urlParams = new URLSearchParams(queryString);
+  const urlParams = new URLSearchParams(queryString);
   const product = urlParams.get(param);
   return product;
 }
 
 export function renderListWithTemplate(templateFn, parentElement, list, position = "afterbegin", clear = true) {
   if (clear) {
-      parentElement.innerHTML = '';
+    parentElement.innerHTML = '';
   }
   const htmlStrings = list.map(item => templateFn(item));
   parentElement.insertAdjacentHTML(position, htmlStrings.join(''));
 }
 
-export function renderWithTemplate(templateFn, parentElement, data, callback, position="afterbegin", clear=true) {
+export function renderWithTemplate(templateFn, parentElement, data, callback, position = "afterbegin", clear = true) {
   if (clear) {
     parentElement.innerHTML = "";
   }
   const template = templateFn(data);
   parentElement.insertAdjacentHTML(position, template);
-  if(callback) {
+  if (callback) {
     callback(data);
   }
 }
@@ -73,4 +73,16 @@ export async function loadHeaderFooter() {
 
   renderWithTemplate(() => headerHTML, headerEl);
   renderWithTemplate(() => footerHTML, footerEl);
+}
+
+// Function to animate cart icon when item is added to cart
+export function animateCartIcon() {
+  const cartIcon = document.getElementById('cart-icon');
+  // Add the class to change the color
+  cartIcon.classList.add('adding-item');
+
+  // Remove the class after the transition ends
+  setTimeout(() => {
+    cartIcon.classList.remove('adding-item');
+  }, 500); // 500ms matches the CSS transition duration
 }
