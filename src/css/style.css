@@ -176,7 +176,7 @@ button {
   border-radius: 5px;
   box-sizing: border-box;
 }
-#order-summary {
+.checkout-summary {
   margin-top: 20px;
   border-top: 1px solid #ddd;
   padding-top: 20px;
@@ -213,6 +213,19 @@ button {
   font-weight: bold;
 }
 
+.checkout-summary > ul {
+  padding-left: 0;
+  list-style-type: none;
+}
+.checkout-summary li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.checkout-summary input {
+  width: 25%;
+  font-size: 1em;
+}
 
 .mission {
   padding: 0 0.5em;
