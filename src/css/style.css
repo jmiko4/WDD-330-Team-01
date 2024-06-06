@@ -35,6 +35,7 @@ header {
   padding: 0 10px;
 }
 
+
 .logo {
   line-height: 60px;
   width: 245px;
@@ -109,6 +110,23 @@ button {
   border-bottom: 2px solid var(--primary-color);
 }
 
+.productHeader {
+  display:flex;
+  justify-content: space-between;
+}
+
+.productHeader div {
+  display:flex;
+}
+
+.productHeader a {
+  text-decoration: none;
+}
+
+.productHeader a:hover {
+  text-decoration: underline;
+}
+
 /* End utility classes */
 
 /* Cart icon styles */
@@ -140,11 +158,11 @@ button {
 
 /* End cart icon styles */
 
-.button-link{
+.button-link {
   text-decoration: none;
 }
 
-.checkout-button{
+.checkout-button {
   margin-bottom: 20px;
 }
 
@@ -158,7 +176,8 @@ button {
   padding: 20px;
   border-radius: 5px;
 }
-#checkout-body h2, #checkout-body h3 {
+#checkout-body h2,
+#checkout-body h3 {
   margin-bottom: 10px;
 }
 #checkout-body form {
@@ -192,7 +211,7 @@ button {
 #checkout-body button {
   margin-top: 20px;
   padding: 15px;
-  background-color: #4CAF50;
+  background-color: #4caf50;
   color: white;
   border: none;
   border-radius: 5px;

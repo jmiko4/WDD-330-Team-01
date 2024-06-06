@@ -78,7 +78,7 @@ function updateCartTotal(items) {
 
   // display total
   var totalHTML = document.createElement("p");
-  totalHTML.textContent = `Total: $${total}`;
+  totalHTML.textContent = `Total: $${total.toFixed(2)}`;
   totalHTML.classList.add("cart-total");
 
   //remove existing total display
