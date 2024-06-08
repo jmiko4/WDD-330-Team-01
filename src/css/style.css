@@ -144,11 +144,11 @@ button {
   /* Adjust as necessary */
   right: 10px;
   /* Adjust as necessary */
-  background-color: red;
+  background-color: var(--primary-color);
   color: white;
   border-radius: 50%;
-  width: 20px;
-  height: 20px;
+  width: 15px;
+  height: 15px;
   display: flex;
   align-items: center;
   justify-content: center;

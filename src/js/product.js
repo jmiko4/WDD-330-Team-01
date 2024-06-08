@@ -4,6 +4,7 @@ import productDetails from "./productDetails.mjs";
 import { addProductToCart } from "./productDetails.mjs";
 import { loadHeaderFooter } from "./utils.mjs";
 import { animateCartIcon } from "./utils.mjs";
+import { updateCartCount } from "./utils.mjs";
 
 const productId = getParam("product");
 productDetails(productId);
@@ -21,3 +22,9 @@ document
   .addEventListener("click", addToCartHandler);
 
 document.getElementById("addToCart").addEventListener("click", animateCartIcon);
+
+document.addEventListener('DOMContentLoaded', (even) => {
+  updateCartCount('so-key');
+});
+
+window.addEventListener('storage', updateCartCount('so-key'));

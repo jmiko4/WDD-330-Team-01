@@ -86,3 +86,9 @@ export function animateCartIcon() {
     cartIcon.classList.remove('adding-item');
   }, 500); // 500ms matches the CSS transition duration
 }
+
+export function updateCartCount(key) {
+  const cartItems = JSON.parse(localStorage.getItem(key)) || [];
+  console.log(cartItems);
+  document.getElementById('cart-count').innerText = cartItems.length;
+}
