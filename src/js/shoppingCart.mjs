@@ -58,7 +58,7 @@ function cartItemTemplate(item) {
   <p class="cart-card__color">${item.Colors[0].ColorName}</p>
   <p class="cart-card__quantity">qty: <input type="number" min="0" size="2" id="quantity${item.Id}" 
   data-id="${item.Id}" value="${item.quantity}"> 
-  <a id= "remove${item.Id}" href=# title="Remove From Cart" data-id="${item.Id}">X</a></p> 
+  <a id= "remove${item.Id}" href=# title="Remove From Cart" data-id="${item.Id}">❌</a></p> 
   <p class="cart-card__price">$${item.FinalPrice}</p>
 </li>`;
 
