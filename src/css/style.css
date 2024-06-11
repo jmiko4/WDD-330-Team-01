@@ -35,7 +35,6 @@ header {
   padding: 0 10px;
 }
 
-
 .logo {
   line-height: 60px;
   width: 245px;
@@ -111,12 +110,12 @@ button {
 }
 
 .productHeader {
-  display:flex;
+  display: flex;
   justify-content: space-between;
 }
 
 .productHeader div {
-  display:flex;
+  display: flex;
 }
 
 .productHeader a {
