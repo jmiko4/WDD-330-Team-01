@@ -9,3 +9,4 @@ document.forms["checkout-form"].addEventListener("submit", (e) => {
     e.preventDefault();
     checkoutProcess.checkout(e.target);
   });
+
