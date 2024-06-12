@@ -50,9 +50,11 @@ const checkoutProcess = {
     );
     itemNumElement.innerText = this.list.length;
     // calculate the total of all the items in the cart
+
     const amounts = this.list.map((item) => item.FinalPrice * item.quantity);
     this.itemTotal = amounts.reduce((sum, item) => sum + item, 0);
     summaryElement.innerText = "$" + this.itemTotal.toFixed(2);
+
   },
   calculateOrdertotal: function () {
     this.shipping = 10 + (this.list.length - 1) * 2;

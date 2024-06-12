@@ -27,6 +27,7 @@ export default async function productList(selector, category, sortBy) {
   const el = document.querySelector(selector);
   // get the list of products
   const products = await getProductsByCategory(category);
+
   if (sortBy == "name") {
     products.sort(function(a, b) {
       return a.Name.localeCompare(b.Name);
@@ -39,6 +40,7 @@ export default async function productList(selector, category, sortBy) {
     });
   }
   console.log(products);
+
   // render out the product list to the element
   renderListWithTemplate(productCardTemplate, el, products);
   products.forEach ( (product) => {
