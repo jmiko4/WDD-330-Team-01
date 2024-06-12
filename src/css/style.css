@@ -109,6 +109,23 @@ button {
   border-bottom: 2px solid var(--primary-color);
 }
 
+.productHeader {
+  display: flex;
+  justify-content: space-between;
+}
+
+.productHeader div {
+  display: flex;
+}
+
+.productHeader a {
+  text-decoration: none;
+}
+
+.productHeader a:hover {
+  text-decoration: underline;
+}
+
 /* End utility classes */
 
 /* Cart icon styles */

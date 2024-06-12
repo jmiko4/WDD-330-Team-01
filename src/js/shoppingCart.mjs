@@ -42,19 +42,24 @@ export default function renderCartContents() {
 }
 
 function cartItemTemplate(item) {
-  return `
-  <li class="cart-card divider">
-    <a href="#" class="cart-card__image">
-      <img src="${item.Image ?? item.Images?.PrimaryMedium}" alt="${item.Name}" />
-    </a>
-    <a href="#">
-      <h2 class="card__name">${item.Name}</h2>
-    </a>
-    <p class="cart-card__color">${item.Colors[0].ColorName}</p>
-    <p class="cart-card__quantity">qty: <input type="number" min="0" size="2" id="quantity${item.Id}" data-id="${item.Id}" value="${item.quantity}"> <a id="remove${item.Id}" href="#" title="Remove From Cart" data-id="${item.Id}">X</a></p> 
-    <p class="cart-card__price">$${item.FinalPrice}</p>
-    <button class="add-to-wishlist" data-id="${item.Id}">Add to Wishlist</button>
-  </li>`;
+  const newItem = `<li class="cart-card divider">
+  <a href="#" class="cart-card__image">
+    <img
+      // src="${item.Image ?? item.Images?.PrimaryMedium}"
+      alt="${item.Name}"
+    />
+  </a>
+  <a href="#">
+    <h2 class="card__name">${item.Name}</h2>
+  </a>
+  <p class="cart-card__color">${item.Colors[0].ColorName}</p>
+  <p class="cart-card__quantity">qty: <input type="number" min="0" size="2" id="quantity${item.Id}" 
+  data-id="${item.Id}" value="${item.quantity}"> 
+  <a id= "remove${item.Id}" href=# title="Remove From Cart" data-id="${item.Id}">❌</a></p> 
+  <p class="cart-card__price">$${item.FinalPrice}</p>
+</li>`;
+
+  return newItem;
 }
 
 function updateCartTotal(items) {
@@ -66,8 +71,9 @@ function updateCartTotal(items) {
     total += item.FinalPrice * item.quantity;
   });
 
-  const totalHTML = document.createElement("p");
-  totalHTML.textContent = `Total: $${total}`;
+  // display total
+  var totalHTML = document.createElement("p");
+  totalHTML.textContent = `Total: $${total.toFixed(2)}`;
   totalHTML.classList.add("cart-total");
 
   const existingTotal = cartFooter.querySelector(".cart-total");

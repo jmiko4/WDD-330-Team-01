@@ -50,9 +50,11 @@ const checkoutProcess = {
     );
     itemNumElement.innerText = this.list.length;
     // calculate the total of all the items in the cart
-    const amounts = this.list.map((item) => item.FinalPrice);
+
+    const amounts = this.list.map((item) => item.FinalPrice * item.quantity);
     this.itemTotal = amounts.reduce((sum, item) => sum + item, 0);
-    summaryElement.innerText = "$" + this.itemTotal;
+    summaryElement.innerText = "$" + this.itemTotal.toFixed(2);
+
   },
   calculateOrdertotal: function () {
     this.shipping = 10 + (this.list.length - 1) * 2;
@@ -70,7 +72,7 @@ const checkoutProcess = {
     const orderTotal = document.querySelector(
       this.outputSelector + " #orderTotal"
     );
-    shipping.innerText = "$" + this.shipping;
+    shipping.innerText = "$" + this.shipping.toFixed(2);
     tax.innerText = "$" + this.tax;
     orderTotal.innerText = "$" + this.orderTotal;
   },
