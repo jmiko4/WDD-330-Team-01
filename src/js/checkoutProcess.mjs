@@ -40,6 +40,7 @@ const checkoutProcess = {
     this.outputSelector = outputSelector;
     this.list = getLocalStorage(key);
     this.calculateItemSummary();
+    this.calculateOrdertotal();
   },
   calculateItemSummary: function () {
     const summaryElement = document.querySelector(

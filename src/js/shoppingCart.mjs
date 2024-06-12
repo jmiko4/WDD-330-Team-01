@@ -57,6 +57,7 @@ function cartItemTemplate(item) {
   data-id="${item.Id}" value="${item.quantity}"> 
   <a id= "remove${item.Id}" href=# title="Remove From Cart" data-id="${item.Id}">❌</a></p> 
   <p class="cart-card__price">$${item.FinalPrice}</p>
+  <button class="add-to-wishlist" data-id="${item.Id}">Add to Wishlist</button>
 </li>`;
 
   return newItem;
