@@ -1,4 +1,6 @@
-import { getLocalStorage } from "./utils.mjs";
+import {
+  setLocalStorage,getLocalStorage,alertMessage,removeAllAlerts,
+} from "./utils.mjs";
 import { checkout } from "./externalServices.mjs";
 
 function formDataToJSON(formElement) {
@@ -37,9 +39,7 @@ const checkoutProcess = {
     this.key = key;
     this.outputSelector = outputSelector;
     this.list = getLocalStorage(key);
-      this.calculateItemSummary();
-      this.calculateOrdertotal();
-      this.displayOrderTotals();
+    this.calculateItemSummary();
   },
   calculateItemSummary: function () {
     const summaryElement = document.querySelector(
@@ -51,7 +51,7 @@ const checkoutProcess = {
     itemNumElement.innerText = this.list.length;
     // calculate the total of all the items in the cart
     const amounts = this.list.map((item) => item.FinalPrice * item.quantity);
-    this.itemTotal = amounts.reduce((sum, item) => sum + item);
+    this.itemTotal = amounts.reduce((sum, item) => sum + item, 0);
     summaryElement.innerText = "$" + this.itemTotal.toFixed(2);
   },
   calculateOrdertotal: function () {
@@ -86,7 +86,15 @@ const checkoutProcess = {
     try {
       const res = await checkout(json);
       console.log(res);
+      setLocalStorage("so-cart", []);
+      location.assign("/checkout/success.html");
     } catch (err) {
+      // get rid of any preexisting alerts.
+      removeAllAlerts();
+      for (let message in err.message) {
+        alertMessage(err.message[message]);
+      }
+
       console.log(err);
     }
   },
