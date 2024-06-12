@@ -387,6 +387,22 @@ button {
   font-weight: bold;
 }
 
+.alert{
+  background-color: var(--primary-color);
+  color: black;
+  padding: 10px;
+  margin-bottom: 15px;
+}
+.alert span, .alert p{
+  display:inline-block;
+}
+.alert span{
+  float:right;
+}
+.alert span:hover{
+  cursor:pointer;
+}
+
 @media screen and (min-width: 500px) {
   body {
     max-width: 1080px;
