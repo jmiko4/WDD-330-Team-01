@@ -465,6 +465,11 @@ button {
   float: right;
 }
 
+.wishlist-card__move button {
+  font-size: 1em;
+  padding: 0.5em 1em;
+}
+
 @media screen and (min-width: 500px) {
   body {
     max-width: 1080px;
