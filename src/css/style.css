@@ -140,11 +140,11 @@ button {
 
 /* End cart icon styles */
 
-.button-link{
+.button-link {
   text-decoration: none;
 }
 
-.checkout-button{
+.checkout-button {
   margin-bottom: 20px;
 }
 
@@ -158,7 +158,8 @@ button {
   padding: 20px;
   border-radius: 5px;
 }
-#checkout-body h2, #checkout-body h3 {
+#checkout-body h2,
+#checkout-body h3 {
   margin-bottom: 10px;
 }
 #checkout-body form {
@@ -192,7 +193,7 @@ button {
 #checkout-body button {
   margin-top: 20px;
   padding: 15px;
-  background-color: #4CAF50;
+  background-color: #4caf50;
   color: white;
   border: none;
   border-radius: 5px;
@@ -250,6 +251,10 @@ button {
 .product-list a {
   text-decoration: none;
   color: var(--dark-grey);
+}
+
+.product-list .quickLook:hover {
+  text-decoration: underline;
 }
 
 /* Styles for product lists */
