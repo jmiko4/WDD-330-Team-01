@@ -44,17 +44,23 @@ export function addProductToCart(product) {
 }
   
 export function renderProductDetails(){
-    document.querySelector("#productName").innerText = product.Brand.Name;
-  document.querySelector("#productNameWithoutBrand").innerText =
-    product.NameWithoutBrand;
-    document.querySelector("#productImage").src = product.Images.PrimaryLarge;
-  document.querySelector("#productImage").alt = product.Name;
-  document.querySelector("#productSuggestedPrice").innerText = "$"+product.SuggestedRetailPrice;
+  document.querySelector("#productName").innerText = product.Brand.Name;
+  document.querySelector("#productNameWithoutBrand").innerText = product.NameWithoutBrand;
+  
+  const productImage = document.querySelector("#productImage");
+  productImage.src = product.Images.PrimaryLarge;
+  productImage.srcset = `
+    ${product.Images.PrimarySmall} 576w,
+    ${product.Images.PrimaryMedium} 768w,
+    ${product.Images.PrimaryLarge} 992w,
+    ${product.Images.PrimaryExtraLarge} 1200w
+  `;
+  productImage.alt = product.Name;
+  
+  document.querySelector("#productSuggestedPrice").innerText = "$" + product.SuggestedRetailPrice;
   document.querySelector("#productFinalPrice").innerText = "Now $" + product.FinalPrice;
   document.querySelector("#productDiscount").innerText = "YOU SAVE $" + Math.floor(product.SuggestedRetailPrice - product.FinalPrice);
-  document.querySelector("#productColorName").innerText =
-    product.Colors[0].ColorName;
-  document.querySelector("#productDescriptionHtmlSimple").innerHTML =
-    product.DescriptionHtmlSimple;
+  document.querySelector("#productColorName").innerText = product.Colors[0].ColorName;
+  document.querySelector("#productDescriptionHtmlSimple").innerHTML = product.DescriptionHtmlSimple;
   document.querySelector("#addToCart").dataset.id = product.Id;
 }

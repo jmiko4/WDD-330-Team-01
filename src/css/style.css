@@ -109,6 +109,23 @@ button {
   border-bottom: 2px solid var(--primary-color);
 }
 
+.productHeader {
+  display: flex;
+  justify-content: space-between;
+}
+
+.productHeader div {
+  display: flex;
+}
+
+.productHeader a {
+  text-decoration: none;
+}
+
+.productHeader a:hover {
+  text-decoration: underline;
+}
+
 /* End utility classes */
 
 /* Cart icon styles */
@@ -219,7 +236,7 @@ button {
 #checkout-body button {
   margin-top: 20px;
   padding: 15px;
-  background-color: #4CAF50;
+  background-color: #4caf50;
   color: white;
   border: none;
   border-radius: 5px;
@@ -282,6 +299,10 @@ button {
 .product-list a {
   text-decoration: none;
   color: var(--dark-grey);
+}
+
+.product-list .quickLook:hover {
+  text-decoration: underline;
 }
 
 /* Styles for product lists */
@@ -412,6 +433,27 @@ button {
   text-decoration: none;
   color: inherit;
   font-weight: bold;
+}
+
+
+.alert {
+  background-color: var(--primary-color);
+  color: black;
+  padding: 10px;
+  margin-bottom: 15px;
+}
+
+.alert span,
+.alert p {
+  display: inline-block;
+}
+
+.alert span {
+  float: right;
+}
+
+.alert span:hover {
+  cursor: pointer;
 }
 
 @media screen and (min-width: 500px) {
