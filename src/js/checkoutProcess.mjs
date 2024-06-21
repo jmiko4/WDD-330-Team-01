@@ -41,6 +41,8 @@ const checkoutProcess = {
     this.list = getLocalStorage(key);
     this.calculateItemSummary();
     this.calculateOrdertotal();
+    this.displayOrderTotals();
+
   },
   calculateItemSummary: function () {
     const summaryElement = document.querySelector(
