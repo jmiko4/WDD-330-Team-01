@@ -64,3 +64,44 @@ export function renderProductDetails(){
   document.querySelector("#productDescriptionHtmlSimple").innerHTML = product.DescriptionHtmlSimple;
   document.querySelector("#addToCart").dataset.id = product.Id;
 }
+
+export function addComment(comment, productId) {
+  // Get the existing comments from local storage
+  const comments = getLocalStorage("so-comments") || {};
+
+  // Initialize the comments array for the specific product if it is undefined
+  if (!comments[productId]) {
+    comments[productId] = [];
+  }
+
+  // Add the comment to the product's comments array
+  comments[productId].push(comment);
+
+  // Save the updated comments to local storage
+  setLocalStorage("so-comments", comments);
+  renderComments(productId);
+}
+
+export function renderComments(productId) {
+  // Get the comments container element
+  const commentsContainer = document.querySelector("#commentsContainer");
+  // Clear any existing comments
+  commentsContainer.innerHTML = "";
+
+  // Get the comments for the specific product from local storage
+  const comments = getLocalStorage("so-comments") || {};
+  const productComments = comments[productId] || [];
+
+  // Loop through each comment and create a comment element
+  productComments.forEach(comment => {
+    const commentElement = document.createElement("div");
+    commentElement.classList.add("comment");
+
+    const commentText = document.createElement("p");
+    commentText.classList.add("comment-text");
+    commentText.innerText = comment;
+    commentElement.appendChild(commentText);
+
+    commentsContainer.appendChild(commentElement);
+  });
+}

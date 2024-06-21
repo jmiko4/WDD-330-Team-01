@@ -85,7 +85,7 @@ header {
   margin-top: -1.3em;
 }
 
-.logo--square>div {
+.logo--square > div {
   margin-top: -1.7em;
 }
 
@@ -243,7 +243,7 @@ button {
   font-weight: bold;
 }
 
-.checkout-summary>ul {
+.checkout-summary > ul {
   padding-left: 0;
   list-style-type: none;
 }
@@ -441,20 +441,20 @@ button {
 .newsletter-form-contact-info label {
   display: block;
   margin-bottom: 1.5rem;
-  font-size: .9rem;
+  font-size: 0.9rem;
 }
 
 .newsletter-form-contact-info input {
   display: block;
   border: none;
-  padding: .5rem;
-  margin-bottom: .5rem;
-  margin-top: .5rem;
-  border-radius: .5rem;
+  padding: 0.5rem;
+  margin-bottom: 0.5rem;
+  margin-top: 0.5rem;
+  border-radius: 0.5rem;
 }
 
 .newsletter-form-contact-info input:focus {
-  border-bottom: .1rem solid var(white);
+  border-bottom: 0.1rem solid var(white);
 }
 
 #newsletter-form-email {
@@ -475,7 +475,7 @@ button {
 #newsletter-form-submit:hover {
   background-color: white;
   color: var(--secondary-color);
-  transition: .5s;
+  transition: 0.5s;
 }
 
 .alert {
@@ -541,7 +541,8 @@ button {
 
 .wishlist-card__move button {
   font-size: 1em;
-  padding: 0.5em 1em;}
+  padding: 0.5em 1em;
+}
 .alert span,
 .alert p {
   display: inline-block;
@@ -556,7 +557,7 @@ button {
 }
 #login-form {
   margin-top: 20px;
-  display:flex;
+  display: flex;
   flex-direction: column;
   align-items: center;
 }
@@ -579,8 +580,6 @@ button {
   border-radius: 5px;
   box-sizing: border-box;
   max-width: 15rem;
-  
-  
 }
 
 #login-form button {
@@ -594,7 +593,49 @@ button {
   cursor: pointer;
   margin-bottom: 1em;
 }
+#addComment {
+  font-size: smaller;
+  margin-bottom: 1em;
+}
+.comment {
+  width: 90%;
+  margin-bottom: 10px;
+  padding: 10px;
+  background-color: var(--light-grey);
+  border-radius: 5px;
+}
 
+.comment-text {
+  margin: 0;
+  margin-left: 0.5em;
+  color: var(--dark-grey);
+}
+
+.comments-header {
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+#commentsContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+#commentInput {
+  width: 90%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-sizing: border-box;
+  margin-bottom: 1em;
+}
+.submitComment {
+  margin-bottom: 1em;
+}
+
+.hidden {
+  display: none;
+}
 @media screen and (min-width: 500px) {
   body {
     max-width: 1080px;
