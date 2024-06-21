@@ -113,3 +113,14 @@ export function removeAllAlerts() {
   const alerts = document.querySelectorAll(".alert");
   alerts.forEach((alert) => document.querySelector("main").removeChild(alert));
 }
+
+// Form submission confirmation
+export function submissionConfirmation() {
+  const form = document.querySelector("#newsletterForm");
+  form.addEventListener("submit", function (event) {
+    event.preventDefault();
+
+    // Replace form with a confirmation message
+    form.innerHTML = "<p>Thank you for your submission! You will receive a confirmation email promptly.</p>";
+  });
+};
