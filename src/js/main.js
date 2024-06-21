@@ -5,5 +5,4 @@ document.addEventListener("DOMContentLoaded", async function () {
   await loadHeaderFooter();
 });
 
-
 document.addEventListener("DOMContentLoaded", submissionConfirmation());

@@ -4,7 +4,7 @@ import productDetails from "./productDetails.mjs";
 import { addProductToCart } from "./productDetails.mjs";
 import { loadHeaderFooter } from "./utils.mjs";
 import { animateCartIcon } from "./utils.mjs";
-import { addComment,renderComments } from "./productDetails.mjs";
+import { addComment, renderComments } from "./productDetails.mjs";
 
 const productId = getParam("product");
 productDetails(productId);
@@ -42,13 +42,15 @@ function submitCommentHandler() {
   const addCommentButton = document.getElementById("addComment");
   const commentInput = document.getElementById("commentInput");
   const comment = commentInput.value;
-  addComment(comment,productId);
+  addComment(comment, productId);
   commentInput.value = "";
   addCommentButton.classList.remove("hidden");
 }
 
 // add listener to Add Comment button
-document.getElementById("addComment").addEventListener("click", addCommentHandler);
+document
+  .getElementById("addComment")
+  .addEventListener("click", addCommentHandler);
 
 // add listener to Add to Cart button
 document
