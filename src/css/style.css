@@ -594,7 +594,50 @@ button {
   cursor: pointer;
   margin-bottom: 1em;
 }
+#addComment{
+  font-size:smaller;
+  margin-bottom: 1em;
+}
+.comment {
+  width:90%;
+  margin-bottom: 10px;
+  padding: 10px;
+  background-color: var(--light-grey);
+  border-radius: 5px;
+}
 
+.comment-text {
+  margin: 0;
+  margin-left: .5em;
+  color: var(--dark-grey);
+}
+
+.comments-header {
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+#commentsContainer{
+  display:flex;
+  flex-direction: column;
+  align-items: center;
+}
+#commentInput {
+  width: 90%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-sizing: border-box;
+  margin-bottom: 1em;
+
+}
+.submitComment{
+  margin-bottom: 1em;
+}
+
+.hidden{
+  display:none;
+}
 @media screen and (min-width: 500px) {
   body {
     max-width: 1080px;
