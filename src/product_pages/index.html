@@ -3,33 +3,24 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title id="title"></title>
-    <link rel="stylesheet" href="../css/style.css" />
-    <script src="../js/product.js" type="module"></script>
+    <title id="title">Product Page</title>
+    <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
-    <header class="divider" id="product-header"></header>
-    <main class="divider">
-      <section class="product-detail divider">
-        <h3 id="productName"></h3>
-        <h2 class="divider" id="productNameWithoutBrand"></h2>
-        <img id="productImage" class="divider" src="" srcset="" alt="" />
-        <p class="product-card__suggested-price" id="productSuggestedPrice"></p>
-        <p class="product-card__price" id="productFinalPrice"></p>
-        <p class="product-card__discount" id="productDiscount"></p>
-        <p class="product__color" id="productColorName"></p>
-        <p class="product__description" id="productDescriptionHtmlSimple"></p>
-        <div class="product-detail__add">
-          <button id="addToCart" data-id="">Add to Cart</button>
-        </div>
-      </section>
-      <section class="comment-section">
-        <h1 class="comments-header">Comments</h2>
-        
-        <div id="commentsContainer"></div>
-        <button id="addComment" data-id="">Add Comment</button>
-      </section>
-    </main>
-    <footer id="product-footer"></footer>
+    <h1 id="productName">Product Name</h1>
+    <p id="productNameWithoutBrand">Product Name Without Brand</p>
+    <img id="productImage" src="" alt="Product Image" />
+    <p>Suggested Retail Price: <span id="productSuggestedPrice"></span></p>
+    <p>Final Price: <span id="productFinalPrice"></span></p>
+    <p>Description: <span id="productDescriptionHtmlSimple"></span></p>
+    <p>Color: <span id="productColorName">Select a color</span></p>
+    <div id="colorSwatches"></div>
+
+    <label for="productSelect">Select Product:</label>
+    <select id="productSelect">
+      <!-- Options will be populated by JavaScript -->
+    </select>
+
+    <script src="../js/color-swatch.js"></script>
   </body>
 </html>

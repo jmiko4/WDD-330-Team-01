@@ -657,6 +657,20 @@ button {
   }
 }
 
+/* Color swatches */
+.swatch {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  border: 1px solid #000;
+  margin: 5px;
+  cursor: pointer;
+}
+
+.swatch.selected {
+  border: 2px solid #000;
+}
+
 footer {
   font-size: var(--small-font);
   padding: 1em;
