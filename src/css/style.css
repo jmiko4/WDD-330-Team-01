@@ -478,7 +478,7 @@ button {
 
 .banner-close {
   position: absolute;
-  top: 0%;
+  top: 10%;
   right: 20px; /* Adjust this value to position closer to the center */
   transform: translateY(-50%);
   font-size: 1.5rem;
