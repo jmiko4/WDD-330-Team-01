@@ -32,21 +32,23 @@ const displayDiscounts = (products) => {
 
     const originalPrice = document.createElement("p");
     originalPrice.classList.add("original-price");
-    originalPrice.textContent = `Original Price: $${product.ListPrice.toFixed(
-      2
-    )}`;
+    originalPrice.textContent = `Original Price: $${product.ListPrice.toFixed(2)}`;
 
     const discountElement = document.createElement("p");
     discountElement.classList.add("discount");
-    discountElement.textContent = `Discounted Price: $${discountedPrice.toFixed(
-      2
-    )}`;
+    discountElement.textContent = `Discounted Price: $${discountedPrice.toFixed(2)}`;
+
+    // Create a new element for the discount percentage.
+    const discountBadge = document.createElement("div");
+    discountBadge.classList.add("discount-badge");
+    discountBadge.textContent = `${discountPercentage}% OFF`;
 
     // Append elements to the product card.
     productCard.appendChild(productImage);
     productCard.appendChild(productName);
     productCard.appendChild(originalPrice);
     productCard.appendChild(discountElement);
+    productCard.appendChild(discountBadge); // Append the discount badge
 
     // Append the product card to the product container.
     productContainer.appendChild(productCard);
