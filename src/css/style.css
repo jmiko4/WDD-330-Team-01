@@ -488,8 +488,6 @@ button {
   cursor: pointer;
 }
 
-<<<<<<< HEAD
-=======
 
 =======
 .product-categories {
@@ -748,7 +746,6 @@ button {
   display: none;
 }
 
->>>>>>> e405816fc435e81e9437568f1258877836d31dfc
 @media screen and (min-width: 500px) {
   body {
     max-width: 1080px;
