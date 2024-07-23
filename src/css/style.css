@@ -478,7 +478,7 @@ button {
 
 .banner-close {
   position: absolute;
-  top: 0%;
+  top: 10%;
   right: 20px; /* Adjust this value to position closer to the center */
   transform: translateY(-50%);
   font-size: 1.5rem;
@@ -488,6 +488,8 @@ button {
   cursor: pointer;
 }
 
+<<<<<<< HEAD
+=======
 
 =======
 .product-categories {
@@ -746,6 +748,7 @@ button {
   display: none;
 }
 
+>>>>>>> e405816fc435e81e9437568f1258877836d31dfc
 @media screen and (min-width: 500px) {
   body {
     max-width: 1080px;
