@@ -255,6 +255,61 @@ button {
   grid-column: 3;
 }
 
+/* Banner Section */
+.banner {
+  background-color: #f4f4f4;
+  padding: 20px;
+  text-align: center;
+  margin-bottom: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  position: relative; /* Ensure positioning context for the close button */
+}
+
+.banner-content {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.banner h2 {
+  font-size: 2rem;
+  color: #333;
+  margin-bottom: 10px;
+}
+
+.banner p {
+  font-size: 1.2rem;
+  color: #666;
+  margin-bottom: 20px;
+}
+
+.banner-button {
+  display: inline-block;
+  padding: 10px 20px;
+  font-size: 1rem;
+  color: #fff;
+  background-color: #007bff;
+  text-decoration: none;
+  border-radius: 5px;
+}
+
+.banner-button:hover {
+  background-color: #0056b3;
+}
+
+.banner-close {
+  position: absolute;
+  top: 0%;
+  right: 20px; /* Adjust this value to position closer to the center */
+  transform: translateY(-50%);
+  font-size: 1.5rem;
+  color: red;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+
 @media screen and (min-width: 500px) {
   body {
     max-width: 1080px;

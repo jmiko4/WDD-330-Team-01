@@ -41,7 +41,6 @@ async function displayAlerts() {
     }
   } catch (error) {
     console.error("Error displaying alerts:", error);
-  
   }
 }
 

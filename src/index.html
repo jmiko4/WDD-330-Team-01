@@ -42,6 +42,16 @@
     </header>
     <div id="breadcrumb" class="breadcrumb"></div>
     <main class="divider">
+      <!-- New Banner Section -->
+      <div id="promoBanner" class="banner" style="display: block;">
+        <div class="banner-content">
+          <button id="closeBanner" class="banner-close">&times;</button>
+          <h2>Special Offer: Register Now and Enter Our Giveaway!</h2>
+          <p>Register with our site today and get a chance to win amazing camping gear. Don't miss out!</p>
+          <a href="register.html" class="banner-button">Register Here</a>
+        </div>
+      </div>
+      
       <div class="hero">
         <img
           src="/images/banner-sm.jpg"
@@ -112,24 +122,9 @@
         </ul>
       </section>
     </main>
-    <script defer src="/js/breadcrumb.js"></script>
-    <script src="alertModuel.js"></script>
-    
-    <script defer src="modal.js"></script>
+    <!-- <script defer src="/js/breadcrumb.js"></script> -->
+    <!-- <script src="alertModuel.js"></script> -->
+    <script defer src="js/banner.js"></script>
     <footer>&copy;NOT a real business</footer>
-
-    <div id="registerModal" class="modal">
-      <div class="modal-content">
-        <span class="close">&times;</span>
-        <h2>Register Now and Enter Our Giveaway!</h2>
-        <p>
-          Register with our site today and get a chance to win amazing camping
-          gear. Don't miss out!
-        </p>
-        <button onclick="window.location.href='register.html'">
-          Register Now
-        </button>
-      </div>
-    </div>
   </body>
 </html>
