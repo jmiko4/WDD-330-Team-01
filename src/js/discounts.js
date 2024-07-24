@@ -5,6 +5,9 @@ const productContainer = document.querySelector(".product-listing-container");
 const fetchProducts = async () => {
   try {
     const response = await fetch("./json/tents.json");
+    if (!response.ok) {
+      throw new Error("Network response was not ok");
+    }
     const products = await response.json();
     displayDiscounts(products);
   } catch (error) {
@@ -42,11 +45,17 @@ const displayDiscounts = (products) => {
       2
     )}`;
 
+    // Create a new element for the discount percentage.
+    const discountBadge = document.createElement("div");
+    discountBadge.classList.add("discount-badge");
+    discountBadge.textContent = `${discountPercentage}% OFF`;
+
     // Append elements to the product card.
     productCard.appendChild(productImage);
     productCard.appendChild(productName);
     productCard.appendChild(originalPrice);
     productCard.appendChild(discountElement);
+    productCard.appendChild(discountBadge); // Append the discount badge
 
     // Append the product card to the product container.
     productContainer.appendChild(productCard);

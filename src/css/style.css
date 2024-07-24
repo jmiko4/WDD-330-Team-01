@@ -128,21 +128,37 @@ button {
 
 /* End utility classes */
 
-/* Nav breadcrumb */
 .breadcrumb {
-  padding: 10px;
-  font-size: 14px;
-  background-color: #f8f8f8;
+  padding: 10px 0;
+  background-color: #f8f9fa;
+  border-bottom: 1px solid #ddd;
 }
+
+.breadcrumb ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.breadcrumb li {
+  display: inline;
+  margin-right: 5px;
+}
+
 .breadcrumb a {
   text-decoration: none;
   color: #007bff;
 }
+
 .breadcrumb a:hover {
   text-decoration: underline;
 }
 
-/* End nav breadcrumb */
+.breadcrumb li + li::before {
+  content: "→";
+  margin: 0 5px;
+  color: #6c757d;
+}
 
 /* Modal Styles */
 .modal {
@@ -396,6 +412,25 @@ button {
   font-weight: bold;
 }
 
+/* disoccunt badge */
+
+..price {
+  font-size: 18px;
+  font-weight: bold;
+  margin: 10px 0;
+}
+
+.discount-badge {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background-color: red;
+  color: white;
+  padding: 5px 10px;
+  font-size: 14px;
+  border-radius: 3px;
+  font-weight: bold;
+}
 /* Start cart list card styles */
 .cart-card {
   display: grid;
@@ -488,9 +523,7 @@ button {
   cursor: pointer;
 }
 
-
-=======
-.product-categories {
+======= .product-categories {
   padding: 20px;
   text-align: center;
 }

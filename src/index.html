@@ -7,7 +7,6 @@
     <link rel="stylesheet" href="/css/style.css" />
   </head>
 
-
   <body>
     <header class="divider" id="main-header"></header>
     <main class="divider">
@@ -23,6 +22,15 @@
           <a href="register.html" class="banner-button">Register Here</a>
         </div>
       </div>
+
+      <!-- Breadcrumb Navigation -->
+      <nav id="breadcrumb" class="breadcrumb" style="display: none">
+        <ul>
+          <li><a href="/">Home</a></li>
+          <li id="breadcrumb-category"></li>
+          <li id="breadcrumb-item"></li>
+        </ul>
+      </nav>
 
       <div class="hero">
         <img
@@ -92,7 +100,7 @@
         <h2>Top Products</h2>
         <ul class="product-list">
           <li class="product-card">
-            <a href="product_pages/index.html?product=880RR">
+            <a href="product_pages/marmot-ajax-3.html">
               <img
                 src="images/tents/marmot-ajax-tent-3-person-3-season-in-pale-pumpkin-terracotta~p~880rr_01~320.jpg"
                 alt="Marmot Ajax tent"
@@ -180,10 +188,7 @@
       </section>
     </main>
     <script defer src="js/banner.js"></script>
+    <script type="module" src="js/main.js"></script>
     <footer>&copy;NOT a real business</footer>
-
-    <footer id="main-footer"></footer>
-
   </body>
-  <script type="module" src="js/main.js"></script>
 </html>
