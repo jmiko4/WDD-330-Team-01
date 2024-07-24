@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sleep Outside | Register</title>
+    <link rel="stylesheet" href="/css/style.css" />
+  </head>
+  <body>
+    <!-- Header -->
+    <header class="divider" id="main-header">
+      <!-- Your header content here, if applicable -->
+    </header>
+
+    <!-- Main Content -->
+    <main class="flex-center">
+      <section class="registration-form">
+        <h2>Create an Account</h2>
+        <form id="signupForm" action="/users" method="POST">
+          <fieldset>
+            <label for="name">Name</label>
+            <input type="text" id="name" name="name" placeholder="John Doe" required />
+            
+            <label for="address">Address</label>
+            <input type="text" id="address" name="address" placeholder="123 Main St" required />
+
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" placeholder="john.doe@example.com" required />
+          </fieldset>
+          <input type="submit" value="Register" />
+        </form>
+      </section>
+    </main>
+
+    <!-- Footer -->
+    <footer>&copy;NOT a real business</footer>
+
+    <script defer src="js/signup.js"></script>
+  </body>
+</html>
