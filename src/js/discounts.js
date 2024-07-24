@@ -1,5 +1,3 @@
-import { renderComments } from "./productDetails.mjs";
-
 // Select the container where product listings are rendered.
 const productContainer = document.querySelector(".product-listing-container");
 
@@ -61,9 +59,6 @@ const displayDiscounts = (products) => {
 
     // Append the product card to the product container.
     productContainer.appendChild(productCard);
-
-    // Render comments for the product
-    renderComments(productCard, product);
   });
 };
 
