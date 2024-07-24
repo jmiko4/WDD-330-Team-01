@@ -1,52 +1,52 @@
 import { findProductById } from "./externalServices.mjs";
 import { setLocalStorage, getLocalStorage } from "./utils.mjs";
+
 let product = {};
 
-export default async function productDetails(productId){ 
-  // get the details for the current product. findProductById will return a promise! use await or .then() to process it
-  product = await findProductById(productId);
-  
-  if (product) {
-    // once we have the product details we can render out the HTML
-    renderProductDetails();
-    // once the HTML is rendered we can add a listener to Add to Cart button
-    document.getElementById("addToCart").addEventListener("click", addToCart);
-  } else {
-    // Display error message and hide "Add to Cart" button
-    alert("Product not found.");
-    document.getElementById("addToCart").style.display = "none";
+export default async function productDetails(productId) {
+  try {
+    // Get the details for the current product. `findProductById` returns a promise.
+    product = await findProductById(productId);
+
+    if (product) {
+      // Render product details and set up event listener for the "Add to Cart" button
+      renderProductDetails();
+      document.getElementById("addToCart").addEventListener("click", () => addProductToCart(product));
+    } else {
+      // Display error message and hide "Add to Cart" button
+      alert("Product not found.");
+      document.getElementById("addToCart").style.display = "none";
+    }
+  } catch (error) {
+    console.error("Error fetching product details:", error);
+    alert("An error occurred while fetching product details. Please try again later.");
   }
 }
-export function addProductToCart(product) {
-    // check to see if cart is empty
-    // if empty create a new array and put in cart
-    // if not empty add to current array and put in cart
-    const cart = getLocalStorage("so-cart");
-    if (cart == null) {
-      // set quantity to one
-      product.quantity = 1;
-      setLocalStorage("so-cart", [product]);
-    } else {
-      const sameItem = cart.find((item)=> item.Id == product.Id);
 
-      // debugger;
+export function addProductToCart(cartProduct) {
+  // Check if cart is empty
+  const cart = getLocalStorage("so-cart") || [];
 
-        if (sameItem != null ) {
-          sameItem.quantity = sameItem.quantity + 1;
-        }
+  // Find if the product already exists in the cart
+  const existingProduct = cart.find(item => item.Id === cartProduct.Id);
 
-        else {
-         product.quantity = 1
-         cart.push(product);
-        }
-        setLocalStorage("so-cart", cart);
-    }
+  if (existingProduct) {
+    // Increment quantity if the product is already in the cart
+    existingProduct.quantity += 1;
+  } else {
+    // Add new product with quantity set to 1
+    cartProduct.quantity = 1;
+    cart.push(cartProduct);
+  }
+
+  // Save the updated cart to local storage
+  setLocalStorage("so-cart", cart);
 }
-  
-export function renderProductDetails(){
+
+export function renderProductDetails() {
   document.querySelector("#productName").innerText = product.Brand.Name;
   document.querySelector("#productNameWithoutBrand").innerText = product.NameWithoutBrand;
-  
+
   const productImage = document.querySelector("#productImage");
   productImage.src = product.Images.PrimaryLarge;
   productImage.srcset = `
@@ -56,10 +56,10 @@ export function renderProductDetails(){
     ${product.Images.PrimaryExtraLarge} 1200w
   `;
   productImage.alt = product.Name;
-  
-  document.querySelector("#productSuggestedPrice").innerText = "$" + product.SuggestedRetailPrice;
-  document.querySelector("#productFinalPrice").innerText = "Now $" + product.FinalPrice;
-  document.querySelector("#productDiscount").innerText = "YOU SAVE $" + Math.floor(product.SuggestedRetailPrice - product.FinalPrice);
+
+  document.querySelector("#productSuggestedPrice").innerText = "$" + product.SuggestedRetailPrice.toFixed(2);
+  document.querySelector("#productFinalPrice").innerText = "Now $" + product.FinalPrice.toFixed(2);
+  document.querySelector("#productDiscount").innerText = "YOU SAVE $" + (product.SuggestedRetailPrice - product.FinalPrice).toFixed(2);
   document.querySelector("#productColorName").innerText = product.Colors[0].ColorName;
   document.querySelector("#productDescriptionHtmlSimple").innerHTML = product.DescriptionHtmlSimple;
   document.querySelector("#addToCart").dataset.id = product.Id;
@@ -69,7 +69,7 @@ export function addComment(comment, productId) {
   // Get the existing comments from local storage
   const comments = getLocalStorage("so-comments") || {};
 
-  // Initialize the comments array for the specific product if it is undefined
+  // Initialize the comments array for the specific product if undefined
   if (!comments[productId]) {
     comments[productId] = [];
   }

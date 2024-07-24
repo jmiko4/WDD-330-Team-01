@@ -39,11 +39,10 @@ export default async function productList(selector, category, sortBy) {
     return a.FinalPrice - b.FinalPrice;
     });
   }
-  console.log(products);
 
   // render out the product list to the element
   renderListWithTemplate(productCardTemplate, el, products);
-  products.forEach ( (product) => {
+  products.forEach ((product) => {
     document.getElementById(`close${product.Id}`).addEventListener("click", 
     () => document.getElementById(`dialog${product.Id}`).close());;
     document.getElementById(`product${product.Id}`).addEventListener("click", 

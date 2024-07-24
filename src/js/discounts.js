@@ -5,6 +5,9 @@ const productContainer = document.querySelector(".product-listing-container");
 const fetchProducts = async () => {
   try {
     const response = await fetch("./json/tents.json");
+    if (!response.ok) {
+      throw new Error("Network response was not ok");
+    }
     const products = await response.json();
     displayDiscounts(products);
   } catch (error) {
@@ -32,11 +35,15 @@ const displayDiscounts = (products) => {
 
     const originalPrice = document.createElement("p");
     originalPrice.classList.add("original-price");
-    originalPrice.textContent = `Original Price: $${product.ListPrice.toFixed(2)}`;
+    originalPrice.textContent = `Original Price: $${product.ListPrice.toFixed(
+      2
+    )}`;
 
     const discountElement = document.createElement("p");
     discountElement.classList.add("discount");
-    discountElement.textContent = `Discounted Price: $${discountedPrice.toFixed(2)}`;
+    discountElement.textContent = `Discounted Price: $${discountedPrice.toFixed(
+      2
+    )}`;
 
     // Create a new element for the discount percentage.
     const discountBadge = document.createElement("div");

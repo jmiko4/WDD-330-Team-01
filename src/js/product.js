@@ -1,60 +1,71 @@
-import { getParam } from "./utils.mjs";
-import { findProductById } from "./externalServices.mjs";
-import productDetails from "./productDetails.mjs";
-import { addProductToCart } from "./productDetails.mjs";
-import { loadHeaderFooter } from "./utils.mjs";
-import { animateCartIcon } from "./utils.mjs";
-import { addComment, renderComments } from "./productDetails.mjs";
+import { renderComments } from "./productDetails.mjs";
 
-const productId = getParam("product");
-productDetails(productId);
-loadHeaderFooter();
-renderComments(productId);
+// Select the container where product listings are rendered.
+const productContainer = document.querySelector(".product-listing-container");
 
-// add to cart button event handler
-async function addToCartHandler(e) {
-  const product = await findProductById(e.target.dataset.id);
-  addProductToCart(product);
-}
-// add comment button event handler
-function addCommentHandler() {
-  const addCommentButton = document.getElementById("addComment");
-  // Create input field
-  const inputField = document.createElement("input");
-  inputField.setAttribute("type", "text");
-  inputField.setAttribute("id", "commentInput");
+// Fetch the JSON data from the provided URL.
+const fetchProducts = async () => {
+  try {
+    const response = await fetch("./json/tents.json");
+    if (!response.ok) {
+      throw new Error("Network response was not ok");
+    }
+    const products = await response.json();
+    displayDiscounts(products);
+  } catch (error) {
+    console.error("Error fetching product data:", error);
+  }
+};
 
-  // Create submit button
-  const submitButton = document.createElement("button");
-  submitButton.textContent = "Submit";
-  submitButton.addEventListener("click", submitCommentHandler);
-  submitButton.classList.add("submitComment");
+// Function to calculate and display discounts.
+const displayDiscounts = (products) => {
+  products.forEach((product) => {
+    // Calculate the discounted price.
+    const discountPercentage = 25; // Example discount percentage.
+    const discountedPrice = product.ListPrice * (1 - discountPercentage / 100);
 
-  // Append input field and submit button to the document
-  const commentContainer = document.getElementById("commentsContainer");
-  commentContainer.append(inputField);
-  commentContainer.append(submitButton);
-  addCommentButton.classList.add("hidden");
-}
+    // Create elements to display product information and discount.
+    const productCard = document.createElement("div");
+    productCard.classList.add("product-card");
 
-// submit comment button event handler
-function submitCommentHandler() {
-  const addCommentButton = document.getElementById("addComment");
-  const commentInput = document.getElementById("commentInput");
-  const comment = commentInput.value;
-  addComment(comment, productId);
-  commentInput.value = "";
-  addCommentButton.classList.remove("hidden");
-}
+    const productName = document.createElement("h2");
+    productName.textContent = product.NameWithoutBrand;
 
-// add listener to Add Comment button
-document
-  .getElementById("addComment")
-  .addEventListener("click", addCommentHandler);
+    const productImage = document.createElement("img");
+    productImage.src = product.Image;
+    productImage.alt = product.NameWithoutBrand;
 
-// add listener to Add to Cart button
-document
-  .getElementById("addToCart")
-  .addEventListener("click", addToCartHandler);
+    const originalPrice = document.createElement("p");
+    originalPrice.classList.add("original-price");
+    originalPrice.textContent = `Original Price: $${product.ListPrice.toFixed(
+      2
+    )}`;
 
-document.getElementById("addToCart").addEventListener("click", animateCartIcon);
+    const discountElement = document.createElement("p");
+    discountElement.classList.add("discount");
+    discountElement.textContent = `Discounted Price: $${discountedPrice.toFixed(
+      2
+    )}`;
+
+    // Create a new element for the discount percentage.
+    const discountBadge = document.createElement("div");
+    discountBadge.classList.add("discount-badge");
+    discountBadge.textContent = `${discountPercentage}% OFF`;
+
+    // Append elements to the product card.
+    productCard.appendChild(productImage);
+    productCard.appendChild(productName);
+    productCard.appendChild(originalPrice);
+    productCard.appendChild(discountElement);
+    productCard.appendChild(discountBadge); // Append the discount badge
+
+    // Append the product card to the product container.
+    productContainer.appendChild(productCard);
+
+    // Render comments for the product
+    renderComments(productCard, product);
+  });
+};
+
+// Call the function to fetch products and display discounts.
+fetchProducts();

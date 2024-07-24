@@ -3,12 +3,20 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Sleep Outside | Home</title>
+    <title>Sleep Outside | Product Listing</title>
     <link rel="stylesheet" href="/css/style.css" />
-    <script src="../js/discount.js" type="module"></script>
   </head>
   <body>
     <header class="divider" id="main-header"></header>
+
+    <!-- Breadcrumb Navigation -->
+    <nav id="breadcrumb" class="breadcrumb">
+      <ul>
+        <li><a href="/">Home</a></li>
+        <li id="breadcrumb-category"></li>
+        <li id="breadcrumb-item"></li>
+      </ul>
+    </nav>
 
     <main class="divider">
       <section class="products">
@@ -22,6 +30,10 @@
         <div class="product-listing-container"></div>
       </section>
     </main>
+
     <footer id="main-footer"></footer>
+
+    <script src="../js/discountDisplay.js" type="module"></script>
+    <script type="module" src="../js/breadcrumb.js"></script>
   </body>
 </html>
