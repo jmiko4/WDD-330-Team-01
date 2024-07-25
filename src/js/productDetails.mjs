@@ -1,98 +1,90 @@
 import { findProductById } from "./externalServices.mjs";
 import { setLocalStorage, getLocalStorage } from "./utils.mjs";
-let product = {};
 
-export default async function productDetails(productId){ 
-  // get the details for the current product. findProductById will return a promise! use await or .then() to process it
-  product = await findProductById(productId);
-  
-  if (product) {
-    // once we have the product details we can render out the HTML
-    renderProductDetails();
-    // once the HTML is rendered we can add a listener to Add to Cart button
-    document.getElementById("addToCart").addEventListener("click", addToCart);
-  } else {
-    // Display error message and hide "Add to Cart" button
-    alert("Product not found.");
+let productData = {}; // Renamed to avoid shadowing
+
+export default async function productDetails(productId) { 
+  try {
+    productData = await findProductById(productId);
+    if (productData) {
+      renderProductDetails();
+      document.getElementById("addToCart").addEventListener("click", addToCart);
+    } else {
+      alert("Product not found.");
+      document.getElementById("addToCart").style.display = "none";
+    }
+  } catch (error) {
+    console.error("Error fetching product details:", error);
+    alert("An error occurred while fetching product details.");
     document.getElementById("addToCart").style.display = "none";
   }
 }
-export function addProductToCart(product) {
-    // check to see if cart is empty
-    // if empty create a new array and put in cart
-    // if not empty add to current array and put in cart
-    const cart = getLocalStorage("so-cart");
-    if (cart == null) {
-      // set quantity to one
-      product.quantity = 1;
-      setLocalStorage("so-cart", [product]);
-    } else {
-      const sameItem = cart.find((item)=> item.Id == product.Id);
 
-      // debugger;
-
-        if (sameItem != null ) {
-          sameItem.quantity = sameItem.quantity + 1;
-        }
-
-        else {
-         product.quantity = 1
-         cart.push(product);
-        }
-        setLocalStorage("so-cart", cart);
-    }
+export function addToCart() {
+  addProductToCart(productData);
 }
-  
-export function renderProductDetails(){
-  document.querySelector("#productName").innerText = product.Brand.Name;
-  document.querySelector("#productNameWithoutBrand").innerText = product.NameWithoutBrand;
+
+export function addProductToCart(product) {
+  const cart = getLocalStorage("so-cart");
+  if (cart == null) {
+    product.quantity = 1;
+    setLocalStorage("so-cart", [product]);
+  } else {
+    const sameItem = cart.find((item) => item.Id === product.Id);
+    if (sameItem != null) {
+      sameItem.quantity += 1;
+    } else {
+      product.quantity = 1;
+      cart.push(product);
+    }
+    setLocalStorage("so-cart", cart);
+  }
+}
+
+export function renderProductDetails() {
+  document.querySelector("#productName").innerText = productData.Brand.Name;
+  document.querySelector("#productNameWithoutBrand").innerText = productData.NameWithoutBrand;
   
   const productImage = document.querySelector("#productImage");
-  productImage.src = product.Images.PrimaryLarge;
+  productImage.src = productData.Images.PrimaryLarge;
   productImage.srcset = `
-    ${product.Images.PrimarySmall} 576w,
-    ${product.Images.PrimaryMedium} 768w,
-    ${product.Images.PrimaryLarge} 992w,
-    ${product.Images.PrimaryExtraLarge} 1200w
+    ${productData.Images.PrimarySmall} 576w,
+    ${productData.Images.PrimaryMedium} 768w,
+    ${productData.Images.PrimaryLarge} 992w,
+    ${productData.Images.PrimaryExtraLarge} 1200w
   `;
-  productImage.alt = product.Name;
+  productImage.alt = productData.Name;
   
-  document.querySelector("#productSuggestedPrice").innerText = "$" + product.SuggestedRetailPrice;
-  document.querySelector("#productFinalPrice").innerText = "Now $" + product.FinalPrice;
-  document.querySelector("#productDiscount").innerText = "YOU SAVE $" + Math.floor(product.SuggestedRetailPrice - product.FinalPrice);
-  document.querySelector("#productColorName").innerText = product.Colors[0].ColorName;
-  document.querySelector("#productDescriptionHtmlSimple").innerHTML = product.DescriptionHtmlSimple;
-  document.querySelector("#addToCart").dataset.id = product.Id;
+  document.querySelector("#productSuggestedPrice").innerText = "$" + productData.SuggestedRetailPrice;
+  document.querySelector("#productFinalPrice").innerText = "Now $" + productData.FinalPrice;
+  document.querySelector("#productDiscount").innerText = "YOU SAVE $" + Math.floor(productData.SuggestedRetailPrice - productData.FinalPrice);
+  document.querySelector("#productColorName").innerText = productData.Colors[0].ColorName;
+  document.querySelector("#productDescriptionHtmlSimple").innerHTML = productData.DescriptionHtmlSimple;
+  document.querySelector("#addToCart").dataset.id = productData.Id;
 }
 
 export function addComment(comment, productId) {
-  // Get the existing comments from local storage
-  const comments = getLocalStorage("so-comments") || {};
+  if (!comment || typeof comment !== "string" || comment.trim() === "") {
+    alert("Comment cannot be empty.");
+    return;
+  }
 
-  // Initialize the comments array for the specific product if it is undefined
+  const comments = getLocalStorage("so-comments") || {};
   if (!comments[productId]) {
     comments[productId] = [];
   }
-
-  // Add the comment to the product's comments array
   comments[productId].push(comment);
-
-  // Save the updated comments to local storage
   setLocalStorage("so-comments", comments);
   renderComments(productId);
 }
 
 export function renderComments(productId) {
-  // Get the comments container element
   const commentsContainer = document.querySelector("#commentsContainer");
-  // Clear any existing comments
   commentsContainer.innerHTML = "";
 
-  // Get the comments for the specific product from local storage
   const comments = getLocalStorage("so-comments") || {};
   const productComments = comments[productId] || [];
 
-  // Loop through each comment and create a comment element
   productComments.forEach(comment => {
     const commentElement = document.createElement("div");
     commentElement.classList.add("comment");

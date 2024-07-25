@@ -19,3 +19,11 @@ function sortByName() {
 function sortByPrice() {
   productList(".product-list", getParam("category"), "price");
 }
+
+// product-list.js
+import { createAlerts } from "../js/alertModule.mjs";
+
+// Initialize alerts on page load
+document.addEventListener("DOMContentLoaded", () => {
+  createAlerts("alert-container");
+});

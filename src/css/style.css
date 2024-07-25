@@ -288,6 +288,87 @@ button {
   text-decoration: underline;
 }
 
+.carousel {
+  position: relative;
+  display: flex;
+  overflow: hidden;
+}
+
+.carousel img {
+  width: 100%;
+  height: auto;
+}
+
+.carousel-button {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: rgba(0, 0, 0, 0.5);
+  color: white;
+  border: none;
+  cursor: pointer;
+  padding: 10px;
+}
+
+.carousel-button:nth-of-type(1) {
+  left: 10px;
+}
+
+.carousel-button:nth-of-type(2) {
+  right: 10px;
+}
+
+/* swatches */
+
+/* Style for the color swatches container */
+.color-swatches {
+  display: flex;
+  gap: 10px;
+  margin: 10px 0;
+}
+
+/* Style for individual color swatches */
+.color-swatch {
+  width: 40px;
+  height: 40px;
+  border: 2px solid #ccc;
+  border-radius: 50%;
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+}
+
+/* Highlight selected color swatch */
+.color-swatch.selected {
+  border-color: #333;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+}
+
+/* Optional: Hover effect for color swatches */
+.color-swatch:hover {
+  border-color: #888;
+}
+
+/* Style for the color selector dropdown */
+#colorSelector {
+  margin: 10px 0;
+  padding: 5px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+/* alert */
+
+.alert {
+  padding: 10px;
+  margin: 10px 0;
+  border-radius: 5px;
+  color: #000;
+  font-weight: bold;
+  text-align: center;
+}
+
 /* Styles for product lists */
 .product-card {
   flex: 1 1 45%;
