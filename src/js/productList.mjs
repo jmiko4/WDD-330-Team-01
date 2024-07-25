@@ -72,13 +72,12 @@ export default async function productList(selector, category, sortBy) {
   if (sortBy === "price") {
     products.sort((a, b) => a.FinalPrice - b.FinalPrice);
   }
-  console.log(products);
 
   // render out the product list to the element
   renderListWithTemplate(productCardTemplate, el, products);
 
-  // Set up event listeners for modals
-  products.forEach(product => {
+  products.forEach ((product) => {
+
     document.getElementById(`close${product.Id}`).addEventListener("click", 
       () => document.getElementById(`dialog${product.Id}`).close());
     document.getElementById(`product${product.Id}`).addEventListener("click", 

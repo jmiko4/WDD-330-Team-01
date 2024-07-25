@@ -2,29 +2,23 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title id="title">Product Page</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /
+
+    <title id="title"></title>
     <link rel="stylesheet" href="../css/style.css" />
-</head>
-<body>
-    <header class="divider" id="product-header"></header>
-    <main class="divider">
-        <section class="product-detail divider">
-            <h3 id="productName">Product Name</h3>
-            <h2 class="divider" id="productNameWithoutBrand">Product Name Without Brand</h2>
-            
-            <!-- Carousel Container -->
-            <div id="carouselContainer" class="carousel-container">
-                <button class="carousel-button prev" onclick="prevSlide()">
-                    &#10094;
-                </button>
-                <div id="carousel" class="carousel">
-                    <!-- Carousel images will be inserted here -->
-                </div>
-                <button class="carousel-button next" onclick="nextSlide()">
-                    &#10095;
-                </button>
-            </div>
+    <script src="../js/product.js" type="module"></script>
+    <script src="../js/discounts.js"></script>
+  </head>
+  <body>
+    <h1 id="productName">Product Name</h1>
+    <p id="productNameWithoutBrand">Product Name Without Brand</p>
+    <img id="productImage" src="" alt="Product Image" />
+    <p>Suggested Retail Price: <span id="productSuggestedPrice"></span></p>
+    <p>Final Price: <span id="productFinalPrice"></span></p>
+    <p>Description: <span id="productDescriptionHtmlSimple"></span></p>
+    <p>Color: <span id="productColorName">Select a color</span></p>
+    <div id="colorSwatches"></div>
+
 
             <p class="product-card__suggested-price">Suggested Retail Price: <span id="productSuggestedPrice"></span></p>
             <p class="product-card__price">Final Price: <span id="productFinalPrice"></span></p>
