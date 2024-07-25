@@ -19,6 +19,7 @@ export default async function productDetails(productId) {
     }
   } catch (error) {
     console.error("Error fetching product details:", error);
+    
     alert("An error occurred while fetching product details. Please try again later.");
   }
 }
@@ -48,12 +49,12 @@ export function renderProductDetails() {
   document.querySelector("#productNameWithoutBrand").innerText = product.NameWithoutBrand;
 
   const productImage = document.querySelector("#productImage");
-  productImage.src = product.Images.PrimaryLarge;
+  productImage.src = productData.Images.PrimaryLarge;
   productImage.srcset = `
-    ${product.Images.PrimarySmall} 576w,
-    ${product.Images.PrimaryMedium} 768w,
-    ${product.Images.PrimaryLarge} 992w,
-    ${product.Images.PrimaryExtraLarge} 1200w
+    ${productData.Images.PrimarySmall} 576w,
+    ${productData.Images.PrimaryMedium} 768w,
+    ${productData.Images.PrimaryLarge} 992w,
+    ${productData.Images.PrimaryExtraLarge} 1200w
   `;
   productImage.alt = product.Name;
 
@@ -63,36 +64,32 @@ export function renderProductDetails() {
   document.querySelector("#productColorName").innerText = product.Colors[0].ColorName;
   document.querySelector("#productDescriptionHtmlSimple").innerHTML = product.DescriptionHtmlSimple;
   document.querySelector("#addToCart").dataset.id = product.Id;
+
 }
 
 export function addComment(comment, productId) {
-  // Get the existing comments from local storage
+  if (!comment || typeof comment !== "string" || comment.trim() === "") {
+    alert("Comment cannot be empty.");
+    return;
+  }
+
   const comments = getLocalStorage("so-comments") || {};
 
-  // Initialize the comments array for the specific product if undefined
   if (!comments[productId]) {
     comments[productId] = [];
   }
-
-  // Add the comment to the product's comments array
   comments[productId].push(comment);
-
-  // Save the updated comments to local storage
   setLocalStorage("so-comments", comments);
   renderComments(productId);
 }
 
 export function renderComments(productId) {
-  // Get the comments container element
   const commentsContainer = document.querySelector("#commentsContainer");
-  // Clear any existing comments
   commentsContainer.innerHTML = "";
 
-  // Get the comments for the specific product from local storage
   const comments = getLocalStorage("so-comments") || {};
   const productComments = comments[productId] || [];
 
-  // Loop through each comment and create a comment element
   productComments.forEach(comment => {
     const commentElement = document.createElement("div");
     commentElement.classList.add("comment");

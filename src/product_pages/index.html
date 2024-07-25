@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+<head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /
 
     <title id="title"></title>
     <link rel="stylesheet" href="../css/style.css" />
@@ -19,11 +19,44 @@
     <p>Color: <span id="productColorName">Select a color</span></p>
     <div id="colorSwatches"></div>
 
-    <label for="productSelect">Select Product:</label>
-    <select id="productSelect">
-      <!-- Options will be populated by JavaScript -->
-    </select>
 
-    <script src="../js/color-swatch.js"></script>
-  </body>
+            <p class="product-card__suggested-price">Suggested Retail Price: <span id="productSuggestedPrice"></span></p>
+            <p class="product-card__price">Final Price: <span id="productFinalPrice"></span></p>
+            <p class="product-card__discount" id="productDiscount"></p>
+            
+            <p class="product__color">Color: <span id="productColorName">Select a color</span></p>
+            
+            <!-- Color Swatches Container -->
+            <div id="colorSwatches" class="color-swatches"></div>
+            
+            <!-- Color Selector Dropdown -->
+            <label for="colorSelector">Select Color:</label>
+            <select id="colorSelector">
+                <!-- Options will be populated by JavaScript -->
+            </select>
+            
+            <p class="product__description" id="productDescriptionHtmlSimple"></p>
+            <div class="product-detail__add">
+                <button id="addToCart" data-id="">Add to Cart</button>
+            </div>
+        </section>
+
+        <section class="comment-section">
+            <h1 class="comments-header">Comments</h1>
+            
+            <div id="commentsContainer"></div>
+            <button id="addComment" data-id="">Add Comment</button>
+        </section>
+    </main>
+    <footer id="product-footer"></footer>
+</body>
+</html>
+in>
+    <footer id="product-footer"></footer>
+    <script src="../js/product.js" type="module"></script>
+    <script src="../js/product-details.js"></script>
+    <script src="../js/product-details2.js"></script>
+    <script src="../js/product-details3.js"></script>
+    <script src="../js/product-details3.js"></script>
+</body>
 </html>

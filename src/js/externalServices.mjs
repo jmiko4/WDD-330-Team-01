@@ -4,7 +4,7 @@ function convertToJson(res) {
     if (res.ok) {
       return jsonResponse;
     } else {
-      throw { name: 'servicesError', message: jsonResponse };
+      throw { name: "servicesError", message: jsonResponse };
     }
   });
 }
@@ -45,7 +45,7 @@ export async function loginRequest(creds) {
   if (response.ok) {
     localStorage.setItem("so_token", data.token);
   } else {
-    throw { name: 'servicesError', message: data };
+    throw { name: "servicesError", message: data };
   }
 }
 
