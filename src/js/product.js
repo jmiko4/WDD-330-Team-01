@@ -1,4 +1,3 @@
-
 import { getParam } from "./utils.mjs";
 import { findProductById } from "./externalServices.mjs";
 import {
@@ -29,7 +28,10 @@ async function loadProductDetails(productIdParam) {
   // Set up carousel if there are multiple images
   setupCarousel(product.Images);
 
+  // Render comments
   renderComments(productIdParam);
+
+  // Load header and footer
   loadHeaderFooter();
 }
 
@@ -138,8 +140,6 @@ document.getElementById("addToCart").addEventListener("click", async (e) => {
   addProductToCart(product);
   animateCartIcon();
 });
-=======
-import { renderComments } from "./productDetails.mjs";
 
 // Select the container where product listings are rendered.
 const productContainer = document.querySelector(".product-listing-container");
@@ -210,4 +210,3 @@ const displayDiscounts = (products) => {
 
 // Call the function to fetch products and display discounts.
 fetchProducts();
-
