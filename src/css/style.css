@@ -739,17 +739,79 @@ button {
 }
 
 /* Color swatches */
-.swatch {
-  display: inline-block;
-  width: 20px;
-  height: 20px;
-  border: 1px solid #000;
-  margin: 5px;
-  cursor: pointer;
+
+.container {
+  width: 80%;
+  margin: 0 auto;
 }
 
-.swatch.selected {
-  border: 2px solid #000;
+/* Product Details Section */
+.product-details {
+  margin-top: 20px;
+  text-align: center;
+}
+
+/* Product Image */
+.product-image img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Product Name and Price */
+.product-info h1 {
+  margin: 0;
+  font-size: 24px;
+}
+
+.product-info .price-info {
+  font-size: 18px;
+  margin: 10px 0;
+}
+
+/* Description Section */
+.product-description {
+  margin-top: 20px;
+  text-align: left;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Color Swatches Container */
+#colorSwatches {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-top: 10px;
+}
+
+/* Individual Color Swatch */
+.color-swatch {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  margin: 5px;
+  cursor: pointer;
+  border: 2px solid transparent;
+}
+
+/* Selected Color Swatch */
+.color-swatch.selected {
+  border-color: #000;
+}
+
+/* Hover Effect for Color Swatches */
+.color-swatch:hover {
+  border-color: #333;
+}
+
+/* Color Selector Dropdown */
+#colorSelector {
+  width: 200px;
+  padding: 10px;
+  margin-top: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
 }
 
 footer {

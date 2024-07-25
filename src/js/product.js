@@ -14,10 +14,16 @@ async function loadProductDetails(productIdParam) {
 
   // Set product details
   document.getElementById("productName").textContent = product.Name;
-  document.getElementById("productNameWithoutBrand").textContent = product.NameWithoutBrand;
-  document.getElementById("productSuggestedPrice").textContent = `$${product.SuggestedRetailPrice.toFixed(2)}`;
-  document.getElementById("productFinalPrice").textContent = `$${product.FinalPrice.toFixed(2)}`;
-  document.getElementById("productDescriptionHtmlSimple").innerHTML = product.DescriptionHtmlSimple;
+  document.getElementById("productNameWithoutBrand").textContent =
+    product.NameWithoutBrand;
+  document.getElementById(
+    "productSuggestedPrice"
+  ).textContent = `$${product.SuggestedRetailPrice.toFixed(2)}`;
+  document.getElementById(
+    "productFinalPrice"
+  ).textContent = `$${product.FinalPrice.toFixed(2)}`;
+  document.getElementById("productDescriptionHtmlSimple").innerHTML =
+    product.DescriptionHtmlSimple;
 
   // Set up carousel if there are multiple images
   setupCarousel(product.Images);
@@ -29,7 +35,9 @@ async function loadProductDetails(productIdParam) {
 // Define the changeSlide function at the root level
 function changeSlide(direction, images, currentIndex) {
   let newIndex = (currentIndex + direction + images.length) % images.length;
-  images.forEach((img, index) => img.style.display = index === newIndex ? "block" : "none");
+  images.forEach(
+    (img, index) => (img.style.display = index === newIndex ? "block" : "none")
+  );
   return newIndex;
 }
 
@@ -57,14 +65,22 @@ function setupCarousel(images) {
     prevButton.className = "carousel-button prev";
     prevButton.innerHTML = "&#10094;"; // Left arrow
     prevButton.addEventListener("click", () => {
-      currentIndex = changeSlide(-1, document.querySelectorAll(".carousel-image"), currentIndex);
+      currentIndex = changeSlide(
+        -1,
+        document.querySelectorAll(".carousel-image"),
+        currentIndex
+      );
     });
 
     const nextButton = document.createElement("button");
     nextButton.className = "carousel-button next";
     nextButton.innerHTML = "&#10095;"; // Right arrow
     nextButton.addEventListener("click", () => {
-      currentIndex = changeSlide(1, document.querySelectorAll(".carousel-image"), currentIndex);
+      currentIndex = changeSlide(
+        1,
+        document.querySelectorAll(".carousel-image"),
+        currentIndex
+      );
     });
 
     carouselContainer.appendChild(prevButton);
@@ -77,7 +93,11 @@ function setupCarousel(images) {
 
     // Initialize carousel state
     let currentIndex = 0;
-    currentIndex = changeSlide(0, document.querySelectorAll(".carousel-image"), currentIndex);
+    currentIndex = changeSlide(
+      0,
+      document.querySelectorAll(".carousel-image"),
+      currentIndex
+    );
   } else {
     // Single image, no carousel needed
     const productImageElement = document.getElementById("productImage");

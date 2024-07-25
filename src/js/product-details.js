@@ -50,14 +50,16 @@ function fetchProductDetails() {
     Id: "880RR",
     NameWithoutBrand: "Ajax Tent - 3-Person, 3-Season",
     Name: "Marmot Ajax Tent - 3-Person, 3-Season",
-    Image: "../images/tents/marmot-ajax-tent-3-person-3-season-in-pale-pumpkin-terracotta~p~880rr_01~320.jpg",
+    Image:
+      "../images/tents/marmot-ajax-tent-3-person-3-season-in-pale-pumpkin-terracotta~p~880rr_01~320.jpg",
     Colors: [
       {
         ColorCode: "01",
         ColorName: "Pale Pumpkin/Terracotta",
       },
     ],
-    DescriptionHtmlSimple: "Get out and enjoy nature with Marmot&#39;s Ajax tent, featuring a smart design with durable, waterproof construction and two doors for easy access.",
+    DescriptionHtmlSimple:
+      "Get out and enjoy nature with Marmot&#39;s Ajax tent, featuring a smart design with durable, waterproof construction and two doors for easy access.",
     SuggestedRetailPrice: 300.0,
     Brand: {
       Id: "1308",
@@ -69,9 +71,14 @@ function fetchProductDetails() {
   };
 
   document.getElementById("productName").textContent = product.Name;
-  document.getElementById("productSuggestedPrice").textContent = `$${product.SuggestedRetailPrice}`;
-  document.getElementById("productFinalPrice").textContent = `$${product.FinalPrice}`;
-  document.getElementById("productDescriptionHtmlSimple").innerHTML = product.DescriptionHtmlSimple;
+  document.getElementById(
+    "productSuggestedPrice"
+  ).textContent = `$${product.SuggestedRetailPrice}`;
+  document.getElementById(
+    "productFinalPrice"
+  ).textContent = `$${product.FinalPrice}`;
+  document.getElementById("productDescriptionHtmlSimple").innerHTML =
+    product.DescriptionHtmlSimple;
   document.getElementById("productColorName").textContent = "Select a color";
 
   // Populate colors
